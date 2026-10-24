@@ -17,7 +17,8 @@ class BuildJobsTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
-        self.root = Path(self.temp.name)
+        # Match _prepare_build's resolved paths, including Windows 8.3 temp aliases.
+        self.root = Path(self.temp.name).resolve()
         self.project = baseline_tests.GowinMcpTests().write_project(self.root, [("top.v", "file.verilog")])
         (self.root / "top.v").write_text("module top; endmodule", encoding="ascii")
         self.env = patch.dict(os.environ, {"GOWIN_ALLOWED_ROOTS": str(self.root)})

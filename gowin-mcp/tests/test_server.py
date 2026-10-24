@@ -119,7 +119,7 @@ class GowinMcpTests(unittest.TestCase):
             wrapper.write_text("<html><body>report frameset</body></html>", encoding="ascii")
             with patch.dict(os.environ, {"GOWIN_ALLOWED_ROOTS": str(root)}):
                 result = server.gowin_timing_summary(str(project), max_paths=1)
-            self.assertEqual(result["report_path"], str(report))
+            self.assertEqual(result["report_path"], str(report.resolve()))
             self.assertEqual(result["status"], "met-with-coverage-gaps")
             self.assertTrue(result["timing_constraints_met"])
             self.assertFalse(result["timing_clean"])
