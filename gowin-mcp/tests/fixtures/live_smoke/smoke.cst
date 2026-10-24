@@ -1,0 +1,7 @@
+// Exact fixture pins from the project's SOM30354 + Dock31005 constraints.
+IO_LOC "sys_clk" V22;
+IO_LOC "key0_n" AA13;
+IO_LOC "status_led" T18;
+IO_PORT "sys_clk" IO_TYPE=LVCMOS33;
+IO_PORT "key0_n" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "status_led" IO_TYPE=LVCMOS33;

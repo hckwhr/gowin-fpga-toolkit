@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/hckwhr/gowin-fpga-toolkit/main/gowin-mcp/board-profile.schema.json",
+  "title": "Gowin MCP board profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "board", "revision", "part_number", "evidence", "pins"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "board": {"type": "string", "minLength": 1},
+    "revision": {"type": "string", "minLength": 1},
+    "device_name": {"type": "string", "minLength": 1},
+    "part_number": {"type": "string", "minLength": 1},
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "default_attributes": {"$ref": "#/$defs/attributes"},
+    "pins": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["pin", "roles"],
+        "properties": {
+          "pin": {"type": "string", "pattern": "^[A-Za-z0-9_]+(?:,[A-Za-z0-9_]+)*$"},
+          "signal": {"type": "string"},
+          "roles": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 1}
+          },
+          "bank": {"type": ["string", "integer"]},
+          "reserved": {"type": "boolean", "default": false},
+          "priority": {"type": "integer"},
+          "attributes": {"$ref": "#/$defs/attributes"},
+          "notes": {"type": "string"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "attributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "BANK_VCCIO": {"type": ["string", "number"]},
+        "DIFF_RESISTOR": {"type": ["string", "number"]},
+        "DRIVE": {"type": ["string", "number"]},
+        "HYSTERESIS": {"type": "string"},
+        "IO_TYPE": {"type": "string"},
+        "OPEN_DRAIN": {"type": "string"},
+        "PCI_CLAMP": {"type": "string"},
+        "PULL_MODE": {"type": "string"},
+        "PULL_STRENGTH": {"type": "string"},
+        "SINGLE_RESISTOR": {"type": ["string", "number"]},
+        "VREF": {"type": ["string", "number"]}
+      }
+    }
+  }
+}

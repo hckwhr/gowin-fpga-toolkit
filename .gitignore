@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+.gowin-mcp/
+impl/
+*.fs
+*.pr
+*.p
+*.log
+*.cst.bak-*
+.DS_Store
+Thumbs.db

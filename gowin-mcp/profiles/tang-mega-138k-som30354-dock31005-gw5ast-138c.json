@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "board": "Sipeed Tang Mega 138K",
+  "revision": "SOM-30354_DOCK-31005",
+  "device_name": "GW5AST-138C",
+  "part_number": "GW5AST-LV138PG484AC1/I0",
+  "evidence": [
+    "Sipeed SOM 30354 schematic: tang_mega_138k_30354_Schematics..pdf (obtain from board vendor)",
+    "Sipeed Dock 31005 schematic: Tang_Mega_NEO_Dock-138K_31005_Schematics.pdf (obtain from board vendor)",
+    "Gowin UG986-1.2 GW5AST-138 Pinout: Pin List PG484A",
+    "Sipeed tang_mega_138K_pins.cst (verify against the exact SOM/Dock revision)"
+  ],
+  "default_attributes": {
+    "IO_TYPE": "LVCMOS33",
+    "BANK_VCCIO": "3.3"
+  },
+  "pins": [
+    {
+      "pin": "V22",
+      "signal": "som_sys_clk_50mhz",
+      "roles": ["clock"],
+      "bank": "4",
+      "priority": 0,
+      "attributes": {"PULL_MODE": "NONE"},
+      "notes": "SOM Y1100 50 MHz oscillator; PG484A IOB104B/EMCCLK."
+    },
+    {
+      "pin": "AA13",
+      "signal": "dock_sys_rst_n",
+      "roles": ["reset"],
+      "bank": "5",
+      "priority": 0,
+      "attributes": {"PULL_MODE": "UP"},
+      "notes": "Dock silkscreen KEY0 (rightmost user button); schematic S4 / EX_KEY.0 / USER_BUTTON0; active low."
+    },
+    {
+      "pin": "AB13",
+      "signal": "dock_key_0",
+      "roles": ["button"],
+      "bank": "5",
+      "priority": 0,
+      "attributes": {"PULL_MODE": "UP"},
+      "notes": "Dock silkscreen KEY1 (center user button); schematic S2 / EX_KEY.1 / USER_BUTTON1; active low. Official CST port: Key_in[0]."
+    },
+    {
+      "pin": "Y12",
+      "signal": "dock_key_1",
+      "roles": ["button"],
+      "bank": "5",
+      "priority": 1,
+      "attributes": {"PULL_MODE": "UP"},
+      "notes": "Dock silkscreen KEY2 (leftmost user button); schematic S1 / EX_KEY.2 / USER_BUTTON2; active low. Official CST port: Key_in[1]."
+    },
+    {
+      "pin": "T18",
+      "signal": "dock_led_0",
+      "roles": ["led"],
+      "bank": "4",
+      "priority": 0,
+      "attributes": {"PULL_MODE": "NONE"},
+      "notes": "External PMOD LED0 (far right on the module in the left PMOD connector); active low in official examples."
+    },
+    {
+      "pin": "R18",
+      "signal": "dock_led_1",
+      "roles": ["led"],
+      "bank": "4",
+      "priority": 1,
+      "attributes": {"PULL_MODE": "NONE"}
+    },
+    {
+      "pin": "R17",
+      "signal": "dock_led_2",
+      "roles": ["led"],
+      "bank": "4",
+      "priority": 2,
+      "attributes": {"PULL_MODE": "NONE"}
+    },
+    {
+      "pin": "P16",
+      "signal": "dock_led_3",
+      "roles": ["led"],
+      "bank": "4",
+      "priority": 3,
+      "attributes": {"PULL_MODE": "NONE"}
+    },
+    {
+      "pin": "U21",
+      "signal": "dock_led_4",
+      "roles": ["led"],
+      "bank": "4",
+      "priority": 4,
+      "attributes": {"PULL_MODE": "NONE"}
+    },
+    {
+      "pin": "T21",
+      "signal": "dock_led_5",
+      "roles": ["led"],
+      "bank": "4",
+      "priority": 5,
+      "attributes": {"PULL_MODE": "NONE"}
+    },
+    {
+      "pin": "R19",
+      "signal": "dock_led_6",
+      "roles": ["led"],
+      "bank": "4",
+      "priority": 6,
+      "attributes": {"PULL_MODE": "NONE"}
+    },
+    {
+      "pin": "P19",
+      "signal": "dock_led_7",
+      "roles": ["led"],
+      "bank": "4",
+      "priority": 7,
+      "attributes": {"PULL_MODE": "NONE"}
+    },
+    {
+      "pin": "J16",
+      "signal": "dock_ws2812_data",
+      "roles": ["addressable_led_data"],
+      "bank": "3",
+      "priority": 0,
+      "attributes": {"PULL_MODE": "NONE", "DRIVE": "8"}
+    },
+    {
+      "pin": "W12",
+      "signal": "dock_sk9822_clock",
+      "roles": ["addressable_led_clock"],
+      "bank": "5",
+      "priority": 0,
+      "attributes": {"PULL_MODE": "NONE", "DRIVE": "8"},
+      "notes": "Official CST labels this group Mic Array, but the routed signal is SK9822 LED clock."
+    },
+    {
+      "pin": "AA9",
+      "signal": "dock_sk9822_data",
+      "roles": ["addressable_led_data"],
+      "bank": "5",
+      "priority": 1,
+      "attributes": {"PULL_MODE": "NONE", "DRIVE": "8"},
+      "notes": "Official CST labels this group Mic Array, but the routed signal is SK9822 LED data."
+    },
+    {
+      "pin": "Y17",
+      "signal": "dock_audio_bck",
+      "roles": ["audio_bclk"],
+      "bank": "5",
+      "priority": 0
+    },
+    {
+      "pin": "AB17",
+      "signal": "dock_audio_ws",
+      "roles": ["audio_lrclk"],
+      "bank": "5",
+      "priority": 0
+    },
+    {
+      "pin": "AA16",
+      "signal": "dock_audio_din",
+      "roles": ["audio_data"],
+      "bank": "5",
+      "priority": 0
+    },
+    {
+      "pin": "AB16",
+      "signal": "dock_audio_pa_enable_n",
+      "roles": ["audio_enable"],
+      "bank": "5",
+      "priority": 0,
+      "notes": "PA_EN is active low; hold high during reset until the DAC stream is stable."
+    },
+    {
+      "pin": "U15",
+      "signal": "dock_uart_tx",
+      "roles": ["uart_tx"],
+      "bank": "5",
+      "priority": 0,
+      "attributes": {"PULL_MODE": "UP", "DRIVE": "8"}
+    },
+    {
+      "pin": "V14",
+      "signal": "dock_uart_rx",
+      "roles": ["uart_rx"],
+      "bank": "5",
+      "priority": 0,
+      "attributes": {"PULL_MODE": "UP", "DRIVE": "8"},
+      "notes": "Dock 31004 or later; Dock 31002 uses Y14 and is intentionally unsupported here."
+    }
+  ]
+}

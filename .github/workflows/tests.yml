@@ -1,0 +1,23 @@
+name: Python tests
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.13']
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Run unit and stdio protocol tests without EDA
+        run: python -m unittest discover -s gowin-mcp/tests -v

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Gowin FPGA"
+  short_description: "Develop and verify Gowin FPGA projects"
+  default_prompt: "Use $gowin-fpga to inspect and build this Gowin FPGA project."
+policy:
+  allow_implicit_invocation: true
